@@ -11,7 +11,7 @@ const Navbar = () => {
   const navigation = [
     { name: 'Inicio', href: '/' },
     { name: 'Reservas', href: '/reservations' },
-    { name: 'Menú', href: '/menu' },
+    { name: 'Locales', href: '/menu' },
     { name: 'Reseñas', href: '/reviews' },
     { name: 'Contacto', href: '/contact' },
   ]
