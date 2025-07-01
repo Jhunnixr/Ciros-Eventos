@@ -37,7 +37,7 @@ const Contact = () => {
             Contáctanos
           </h1>
           <p className="text-xl text-gray-600">
-            Estamos aquí para ayudarte. Ponte en contacto con nosotros
+            Estamos en Chimbote, Perú. Ponte en contacto con nosotros para tu evento especial
           </p>
         </div>
 
@@ -57,8 +57,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900">Dirección</h3>
                     <p className="text-gray-600">
-                      Av. Principal 123<br />
-                      Miraflores, Lima 15074<br />
+                      Av. José Pardo 123<br />
+                      Chimbote, Áncash<br />
                       Perú
                     </p>
                   </div>
@@ -70,8 +70,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Teléfono</h3>
-                    <p className="text-gray-600">+51 987 654 321</p>
-                    <p className="text-gray-600">+51 1 234 5678</p>
+                    <p className="text-gray-600">+51 943 123 456</p>
+                    <p className="text-gray-600">+51 43 321 654</p>
                   </div>
                 </div>
 
@@ -82,7 +82,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
                     <p className="text-gray-600">info@ciros.com</p>
-                    <p className="text-gray-600">reservas@ciros.com</p>
+                    <p className="text-gray-600">eventos@ciros.com</p>
                   </div>
                 </div>
 
@@ -91,24 +91,28 @@ const Contact = () => {
                     <Clock className="w-6 h-6 text-gold-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Horarios</h3>
+                    <h3 className="font-semibold text-gray-900">Horarios de Atención</h3>
                     <div className="text-gray-600 space-y-1">
-                      <p>Lunes - Jueves: 12:00 - 23:00</p>
-                      <p>Viernes - Sábado: 12:00 - 24:00</p>
-                      <p>Domingo: 12:00 - 22:00</p>
+                      <p>Lunes - Viernes: 9:00 - 18:00</p>
+                      <p>Sábado: 9:00 - 15:00</p>
+                      <p>Domingo: Solo eventos programados</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Map placeholder */}
+            {/* Local Information */}
             <div className="card p-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Nuestra Ubicación
+                Sobre Nuestro Local
               </h3>
-              <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-                <p className="text-gray-600">Mapa de ubicación</p>
+              <div className="space-y-3 text-gray-600">
+                <p>• <strong>Capacidad:</strong> 100 - 300 personas</p>
+                <p>• <strong>Duración:</strong> 8 horas de alquiler</p>
+                <p>• <strong>Precio:</strong> S/ 38 por cubierto</p>
+                <p>• <strong>Ubicación:</strong> Chimbote, Áncash</p>
+                <p>• <strong>Servicios:</strong> DJ, bartender, decoración, catering y más</p>
               </div>
             </div>
           </div>
@@ -185,7 +189,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   className="input-field"
-                  placeholder="Escribe tu mensaje aquí..."
+                  placeholder="Cuéntanos sobre tu evento, fecha tentativa, número de invitados..."
                 />
               </div>
 
