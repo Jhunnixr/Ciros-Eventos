@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Calendar, Clock, Users, MessageSquare, CheckCircle } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
-import { supabase } from '../lib/supabase'
+import { saveReservation, getUserReservations, Reservation } from '../lib/storage'
 import { Link } from 'react-router-dom'
-
-interface Reservation {
-  id: string
-  name: string
-  email: string
-  phone: string
-  date: string
-  time: string
-  guests: number
-  special_requests: string | null
-  status: 'pending' | 'confirmed' | 'cancelled'
-  created_at: string
-}
 
 const Reservations = () => {
   const { user } = useAuth()
@@ -37,28 +24,17 @@ const Reservations = () => {
     if (user) {
       setFormData(prev => ({
         ...prev,
-        name: user.user_metadata?.name || '',
+        name: user.name || '',
         email: user.email || ''
       }))
       fetchUserReservations()
     }
   }, [user])
 
-  const fetchUserReservations = async () => {
+  const fetchUserReservations = () => {
     if (!user) return
-
-    try {
-      const { data, error } = await supabase
-        .from('reservations')
-        .select('*')
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false })
-
-      if (error) throw error
-      setUserReservations(data || [])
-    } catch (err) {
-      console.error('Error fetching reservations:', err)
-    }
+    const reservations = getUserReservations(user.id)
+    setUserReservations(reservations)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -72,20 +48,15 @@ const Reservations = () => {
     setError('')
 
     try {
-      const { error } = await supabase
-        .from('reservations')
-        .insert([
-          {
-            user_id: user.id,
-            ...formData
-          }
-        ])
-
-      if (error) throw error
+      saveReservation({
+        userId: user.id,
+        ...formData,
+        status: 'pending'
+      })
 
       setSuccess(true)
       setFormData({
-        name: user.user_metadata?.name || '',
+        name: user.name || '',
         email: user.email || '',
         phone: '',
         date: '',
@@ -94,6 +65,7 @@ const Reservations = () => {
         special_requests: ''
       })
       fetchUserReservations()
+      setTimeout(() => setSuccess(false), 3000)
     } catch (err) {
       setError('Error al crear la reserva')
     } finally {

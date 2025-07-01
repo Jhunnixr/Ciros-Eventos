@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Star, MessageSquare } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
-import { supabase } from '../lib/supabase'
+import { saveReview, getReviews, Review } from '../lib/storage'
 import { Link } from 'react-router-dom'
-
-interface Review {
-  id: string
-  name: string
-  rating: number
-  comment: string
-  created_at: string
-}
 
 const Reviews = () => {
   const { user } = useAuth()
@@ -26,18 +18,9 @@ const Reviews = () => {
     fetchReviews()
   }, [])
 
-  const fetchReviews = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('reviews')
-        .select('*')
-        .order('created_at', { ascending: false })
-
-      if (error) throw error
-      setReviews(data || [])
-    } catch (err) {
-      console.error('Error fetching reviews:', err)
-    }
+  const fetchReviews = () => {
+    const allReviews = getReviews()
+    setReviews(allReviews)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,18 +29,12 @@ const Reviews = () => {
 
     setLoading(true)
     try {
-      const { error } = await supabase
-        .from('reviews')
-        .insert([
-          {
-            user_id: user.id,
-            name: user.user_metadata?.name || user.email?.split('@')[0] || 'Usuario',
-            rating: newReview.rating,
-            comment: newReview.comment
-          }
-        ])
-
-      if (error) throw error
+      saveReview({
+        userId: user.id,
+        name: user.name || user.email?.split('@')[0] || 'Usuario',
+        rating: newReview.rating,
+        comment: newReview.comment
+      })
 
       setSuccess(true)
       setNewReview({ rating: 5, comment: '' })

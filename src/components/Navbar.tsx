@@ -52,7 +52,7 @@ const Navbar = () => {
             {user ? (
               <div className="flex items-center space-x-4">
                 <span className="text-white text-sm">
-                  Hola, {user.user_metadata?.name || user.email}
+                  Hola, {user.name || user.email}
                 </span>
                 <button
                   onClick={handleSignOut}
@@ -113,7 +113,7 @@ const Navbar = () => {
             {user ? (
               <div className="px-3 py-2 border-t border-gray-700">
                 <p className="text-white text-sm mb-2">
-                  Hola, {user.user_metadata?.name || user.email}
+                  Hola, {user.name || user.email}
                 </p>
                 <button
                   onClick={handleSignOut}
