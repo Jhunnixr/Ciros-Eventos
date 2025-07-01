@@ -1,52 +1,52 @@
 import React from 'react'
-import { Music, Users, Utensils, Camera, Sparkles, Clock, Mic, Wine, MapPin, Star } from 'lucide-react'
+import { Music, Users, Utensils, Camera, Sparkles, Clock, Mic, Wine, MapPin, Star, Calendar } from 'lucide-react'
 
 const Menu = () => {
-  const venues = [
+  const packages = [
     {
-      name: 'Salón Principal',
-      description: 'Nuestro salón principal con capacidad para grandes eventos',
-      image: 'https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=800',
-      capacity: '100-200 personas',
+      name: 'Paquete Básico',
+      description: 'Alquiler del local por 8 horas con servicios esenciales',
+      image: '/imagenes/image.png',
       features: [
-        'Pista de baile amplia',
-        'Sistema de sonido profesional',
-        'Iluminación LED',
-        'Aire acondicionado',
-        'Área de bar',
-        'Cocina equipada'
+        'Alquiler del local por 8 horas',
+        'Mesas y sillas para todos los invitados',
+        'Sistema de sonido básico',
+        'Iluminación ambiente',
+        'Servicio de limpieza',
+        'Personal de apoyo básico'
       ],
-      pricePerPerson: 38
+      pricePerPerson: 38,
+      popular: false
     },
     {
-      name: 'Salón VIP',
-      description: 'Espacio exclusivo para eventos más íntimos pero elegantes',
-      image: 'https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg?auto=compress&cs=tinysrgb&w=800',
-      capacity: '100-150 personas',
+      name: 'Paquete Premium',
+      description: 'Todo lo del paquete básico más servicios adicionales',
+      image: '/imagenes/image copy.png',
       features: [
-        'Decoración premium',
-        'Área VIP exclusiva',
-        'Sistema audiovisual',
-        'Servicio personalizado',
-        'Terraza privada',
-        'Estacionamiento'
+        'Todo lo del paquete básico',
+        'DJ Profesional incluido',
+        'Decoración temática básica',
+        'Bartender por 4 horas',
+        'Bocaditos de bienvenida',
+        'Personal de servicio adicional'
       ],
-      pricePerPerson: 45
+      pricePerPerson: 55,
+      popular: true
     },
     {
-      name: 'Salón Jardín',
-      description: 'Perfecto para eventos al aire libre con ambiente natural',
-      image: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=800',
-      capacity: '100-180 personas',
+      name: 'Paquete Full',
+      description: 'La experiencia completa para tu evento perfecto',
+      image: '/imagenes/image.png',
       features: [
-        'Ambiente al aire libre',
-        'Jardín decorativo',
-        'Área techada',
-        'Iluminación natural',
-        'Espacio para ceremonia',
-        'Zona de fotos'
+        'Todo lo del paquete premium',
+        'Hora loca incluida',
+        'Fotografía profesional',
+        'Decoración premium personalizada',
+        'Bocaditos durante todo el evento',
+        'Coordinador de eventos dedicado'
       ],
-      pricePerPerson: 42
+      pricePerPerson: 75,
+      popular: false
     }
   ]
 
@@ -96,7 +96,7 @@ const Menu = () => {
     {
       icon: <Clock className="w-8 h-8 text-gold-500" />,
       name: 'Horas Adicionales',
-      description: 'Extensión del horario del evento más allá de las 6 horas',
+      description: 'Extensión del horario del evento más allá de las 8 horas',
       price: 'S/ 150 por hora'
     }
   ]
@@ -106,48 +106,104 @@ const Menu = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-serif font-bold text-gray-900 mb-4">
-            Nuestros Locales
+            Nuestro Local de Eventos
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Elige el espacio perfecto para tu evento. Todos nuestros locales incluyen 6 horas de alquiler y tienen capacidad mínima para 100 personas.
+            Local elegante en Chimbote para tus celebraciones más importantes. Alquiler por 8 horas con capacidad para 100-300 personas.
           </p>
-          <div className="mt-4 bg-gold-100 border border-gold-300 rounded-lg p-4 max-w-md mx-auto">
-            <p className="text-gold-800 font-semibold">
-              💡 Precio por cubierto: S/ 38 - S/ 45 por persona
-            </p>
-            <p className="text-gold-700 text-sm">
-              Mínimo 100 personas
-            </p>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <div className="bg-gold-100 border border-gold-300 rounded-lg p-3">
+              <div className="flex items-center justify-center space-x-2">
+                <Users className="w-5 h-5 text-gold-600" />
+                <span className="text-gold-800 font-semibold">100-300 personas</span>
+              </div>
+            </div>
+            <div className="bg-gold-100 border border-gold-300 rounded-lg p-3">
+              <div className="flex items-center justify-center space-x-2">
+                <Clock className="w-5 h-5 text-gold-600" />
+                <span className="text-gold-800 font-semibold">8 horas de alquiler</span>
+              </div>
+            </div>
+            <div className="bg-gold-100 border border-gold-300 rounded-lg p-3">
+              <div className="flex items-center justify-center space-x-2">
+                <MapPin className="w-5 h-5 text-gold-600" />
+                <span className="text-gold-800 font-semibold">Chimbote, Perú</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Venue Options */}
+        {/* Galería del Local */}
         <div className="mb-16">
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8 text-center">
-            Opciones de Locales
+            Galería del Local
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="card overflow-hidden hover:scale-105 transition-transform">
+              <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url(/imagenes/image.png)` }}>
+                <div className="h-full bg-black bg-opacity-20 flex items-end">
+                  <div className="p-4 text-white">
+                    <h3 className="font-semibold">Salón Principal</h3>
+                    <p className="text-sm">Vista general del local</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="card overflow-hidden hover:scale-105 transition-transform">
+              <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url(/imagenes/image copy.png)` }}>
+                <div className="h-full bg-black bg-opacity-20 flex items-end">
+                  <div className="p-4 text-white">
+                    <h3 className="font-semibold">Área de Ceremonia</h3>
+                    <p className="text-sm">Espacio para eventos especiales</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="card overflow-hidden hover:scale-105 transition-transform">
+              <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url(/imagenes/image.png)` }}>
+                <div className="h-full bg-black bg-opacity-20 flex items-end">
+                  <div className="p-4 text-white">
+                    <h3 className="font-semibold">Pista de Baile</h3>
+                    <p className="text-sm">Espacio para celebrar</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Paquetes Disponibles */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8 text-center">
+            Paquetes Disponibles
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {venues.map((venue, index) => (
-              <div key={index} className="card overflow-hidden hover:scale-105 transition-transform">
-                <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url(${venue.image})` }}>
+            {packages.map((pkg, index) => (
+              <div key={index} className={`card overflow-hidden hover:scale-105 transition-transform relative ${pkg.popular ? 'ring-2 ring-gold-400' : ''}`}>
+                {pkg.popular && (
+                  <div className="absolute top-4 right-4 bg-gold-500 text-white px-3 py-1 rounded-full text-sm font-semibold z-10">
+                    Más Popular
+                  </div>
+                )}
+                <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url(${pkg.image})` }}>
                   <div className="h-full bg-black bg-opacity-40 flex items-end">
                     <div className="p-4 text-white">
                       <div className="flex items-center space-x-2">
-                        <MapPin className="w-4 h-4" />
-                        <span className="text-sm">{venue.capacity}</span>
+                        <Calendar className="w-4 h-4" />
+                        <span className="text-sm">8 horas de alquiler</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-serif font-bold text-gray-900 mb-2">
-                    {venue.name}
+                    {pkg.name}
                   </h3>
-                  <p className="text-gray-600 mb-4">{venue.description}</p>
+                  <p className="text-gray-600 mb-4">{pkg.description}</p>
                   
                   <div className="mb-4">
                     <div className="text-2xl font-bold text-gold-600 mb-1">
-                      S/ {venue.pricePerPerson} por persona
+                      S/ {pkg.pricePerPerson} por persona
                     </div>
                     <div className="text-sm text-gray-500">
                       Mínimo 100 personas
@@ -155,7 +211,7 @@ const Menu = () => {
                   </div>
 
                   <ul className="space-y-2 mb-6">
-                    {venue.features.map((feature, featureIndex) => (
+                    {pkg.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center text-sm text-gray-700">
                         <Star className="w-3 h-3 text-gold-400 mr-2 flex-shrink-0" />
                         {feature}
@@ -164,7 +220,7 @@ const Menu = () => {
                   </ul>
                   
                   <button className="btn-primary w-full">
-                    Reservar Este Local
+                    Reservar Este Paquete
                   </button>
                 </div>
               </div>
@@ -172,7 +228,7 @@ const Menu = () => {
           </div>
         </div>
 
-        {/* Additional Services */}
+        {/* Servicios Adicionales */}
         <div>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8 text-center">
             Servicios Adicionales
@@ -200,35 +256,39 @@ const Menu = () => {
           </div>
         </div>
 
-        {/* Pricing Information */}
+        {/* Información del Local */}
         <div className="mt-16">
           <div className="card p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl font-serif font-bold text-gray-900 mb-6 text-center">
-              Información de Precios
+              Características del Local
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">¿Qué incluye el precio por cubierto?</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Instalaciones</h4>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-gold-400 rounded-full mr-3"></div>
-                    Alquiler del local por 6 horas
+                    Salón cerrado con aire acondicionado
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-gold-400 rounded-full mr-3"></div>
-                    Mesas y sillas para todos los invitados
+                    Pista de baile amplia
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-gold-400 rounded-full mr-3"></div>
-                    Sistema de sonido básico
+                    Sistema de sonido profesional
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-gold-400 rounded-full mr-3"></div>
-                    Iluminación ambiente
+                    Iluminación LED personalizable
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-gold-400 rounded-full mr-3"></div>
-                    Servicio de limpieza
+                    Área de bar equipada
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-gold-400 rounded-full mr-3"></div>
+                    Cocina para catering
                   </li>
                 </ul>
               </div>
@@ -236,22 +296,29 @@ const Menu = () => {
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Ejemplo de Cotización</h4>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <div className="flex justify-between mb-2">
-                    <span>120 personas × S/ 38</span>
-                    <span>S/ 4,560</span>
+                    <span>150 personas × S/ 38</span>
+                    <span>S/ 5,700</span>
                   </div>
                   <div className="flex justify-between mb-2">
                     <span>DJ Profesional</span>
                     <span>S/ 400</span>
                   </div>
                   <div className="flex justify-between mb-2">
-                    <span>Bocaditos (120 × S/ 15)</span>
-                    <span>S/ 1,800</span>
+                    <span>Bocaditos (150 × S/ 15)</span>
+                    <span>S/ 2,250</span>
+                  </div>
+                  <div className="flex justify-between mb-2">
+                    <span>Decoración temática</span>
+                    <span>S/ 350</span>
                   </div>
                   <div className="border-t pt-2 flex justify-between font-bold text-gold-600">
                     <span>Total</span>
-                    <span>S/ 6,760</span>
+                    <span>S/ 8,700</span>
                   </div>
                 </div>
+                <p className="text-sm text-gray-500 mt-2">
+                  * Incluye 8 horas de alquiler del local
+                </p>
               </div>
             </div>
             <div className="text-center mt-8">
